@@ -104,8 +104,69 @@ void Task2()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask2\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 10, column = 5;
+	int a[line][column], l, c, i, j;
+
+	for (l = 0; l < line; l++)
+	{
+		a[l][0]=l+1;
+		
+
+		for (c = 0; c < column; c++)
+		{
+			
+			
+			for (i = 0; i < line; i++)
+				for (j = 1; j < column; j++)
+					a[i][j] = 2 + rand() % 4;
+
+		}
+
+	}
+
+	printf("\n\n a)	печать успеваемости (вывод массива на экран).\n\n");
+
+	for (l = 0; l < line; l++)
+	{
+		for (c = 0; c < column; c++)
+		{
+			printf("%3d  ", a[l][c]);
+		}
+		printf("\n");
+	}
+
+	printf("\n\n b)	количество несданных экзаменов у студента (по номеру строки).\n\n");
+
+	printf("Введите номер студента => ");
+	scanf_s("%d", &i);
+
+	j = 0;
+
+	for (c = 1; c < column; c++)
+	{
+		if (a[i-1][c] <= 2) j++;		
+	}
+	
+	printf("\n Не сданно экзаменов = %d", j);
+
+
+	printf("\n\n c)	количество сданных экзаменов у студента (по номеру строки)\n\n");
+
+	printf("Введите номер студента => ");
+	scanf_s("%d", &i);
+
+	j = 0;
+
+	for (c = 1; c < column; c++)
+	{
+		if (a[i - 1][c] >= 3) j++;
+	}
+
+	printf("\n Cданно экзаменов = %d", j);
+
+
 }
 
 
