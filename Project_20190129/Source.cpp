@@ -14,9 +14,9 @@ void Task1()
 	printf("\n--------------------------------------------------------------------------\n\nTask1\n\n");
 	SetConsoleTextAttribute(hConsole, 7);
 
-	int const ind = 5, line=2, column=5;
+	int const ind = 5, n=2;
 	int a[ind][ind], l, c, sum;
-	int b[line][column] = { 0 }, i=0, j=0, buf=0;
+	int b[n][ind] = { 0 }, i=0, j=0, buf=0;
 
 	for (l = 0; l < ind; l++)
 	{
@@ -37,47 +37,64 @@ void Task1()
 		for (c = 0; c < ind; c++)
 		{
 			sum += a[l][c];
-			b[l][c] = sum;
-			b[l][c] = i;
 		}
 		
-		for (l = 0; l < line; l++)
-		{
-			for (c = 0; c < column; c++)
-			{
-				b[0][c] = sum;
-				b[1][c] = i;
-				printf("%d  ", b[l][c]);
-			}
-			b[l][c]=
-			printf("\n");
-		}
+		b[0][l] = sum;
+		b[1][l] = i;
+		i++;
 	}
 
 	printf("\n\n");
 
-	for (i = 0; i < ind; i++)
+	for (i = 0; i < n; i++)
+	{
 		for (j = 0; j < ind; j++)
-			printf("%d  ", b[i][j]);
+		{
+			printf("%3d  ", b[i][j]);
+		}
+		printf("\n");
+	}
 
-
-	for (i = 0; i < ind - 1; i++)		
-		for (j = ind - 2; j >= i; j--)	
-			if (b[j][0] < b[j + 1][0])	
-			{
-				buf = b[j][0];			
-				b[j][0] = b[j + 1][0];	
-				b[j + 1][0] = buf;
-			}
 
 	printf("\n\n");
 
-	for (i = 0; i < ind; i++)
-		for (j = 0; j < ind; j++)
-			printf("%d  ", b[i][j]);
-			
-			
+	int x;
+	for (i = 0; i < ind - 1; i++)		
+		for (j = ind - 2; j >= i; j--)	
+			if (b[0][j] < b[0][j + 1])	
+			{
+				buf = b[0][j];			
+				b[0][j] = b[0][j + 1];	
+				b[0][j + 1]= buf;
 
+				x = b[1][j];
+				b[1][j] = b[1][j + 1];
+				b[1][j + 1] = x;
+			}
+
+
+
+	printf("\n\n");
+
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < ind; j++)
+		{
+			printf("%3d  ", b[i][j]);
+		}
+		printf("\n");
+	}
+			
+	printf("\n\n");
+
+	for (l = 0; l < ind; l++)
+	{
+		for (c = 0; c < ind; c++)
+		{
+			printf("%d  ", a[b[1][l]][c]);
+		}
+		printf("\n");
+	}
 
 
 }
