@@ -174,8 +174,60 @@ void Task3()
 {
 	SetConsoleTextAttribute(hConsole, 10);
 	printf("\n--------------------------------------------------------------------------\n\nTask3\n\n");
-	printf("\nВ разработке.... \n\n");
 	SetConsoleTextAttribute(hConsole, 7);
+
+	int const line = 10, column = 5;
+	int a[line][column], l, c, i, j;
+
+	for (l = 0; l < line; l++)
+	{
+		a[l][0] = l + 1;
+
+
+		for (c = 0; c < column; c++)
+		{
+
+
+			for (i = 0; i < line; i++)
+				for (j = 1; j < column; j++)
+					a[i][j] = 2 + rand() % 4;
+
+		}
+
+	}
+
+	printf("\n\n a)	печать успеваемости (вывод массива на экран).\n\n");
+
+	for (l = 0; l < line; l++)
+	{
+		for (c = 0; c < column; c++)
+		{
+			printf("%3d  ", a[l][c]);
+		}
+		printf("\n");
+	}
+
+	printf("\n\n Необходимо этот массив преобразовать в массив, содержащий оценки по двухбалльной системе (сдал, не сдал) \n\n");
+
+	for (l = 0; l < line; l++)
+	{
+		for (c = 1; c < column; c++)
+		{
+			if (a[l][c] >= 4)  a[l][c] = 1;
+			else  a[l][c] = 0;		
+		}
+	}
+
+
+	for (l = 0; l < line; l++)
+	{
+		for (c = 0; c < column; c++)
+		{
+			printf("%3d  ", a[l][c]);
+		}
+		printf("\n");
+	}
+
 }
 
 
